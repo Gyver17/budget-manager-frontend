@@ -1,0 +1,49 @@
+.container {
+  position: relative;
+  border-bottom: 1px solid var(--primary);
+  margin: 1.5rem 0;
+}
+
+.container input {
+  width: 100%;
+  padding: 0 0.5rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  color: var(--fontColor1);
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.container label {
+  position: absolute;
+  top: 50%;
+  left: 0.3rem;
+  color: var(--primary);
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+.container span::before {
+  content: "";
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  width: 0;
+  height: 0.15rem;
+  background: var(--secondary);
+  transition: all 0.4s;
+}
+
+.container input:focus ~ label,
+.container input:not(:placeholder-shown) ~ label {
+  top: -0.3rem;
+  color: var(--secondary);
+}
+
+.container input:focus ~ span::before,
+.container input:not(:placeholder-shown) ~ span::before {
+  width: 100%;
+}

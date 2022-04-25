@@ -1,38 +1,35 @@
 .App {
   text-align: center;
+  background: url("./assets/background/polygon-scatter-haikei.svg");
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App::-webkit-scrollbar {
+  -webkit-appearance: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App::-webkit-scrollbar:vertical {
+  width: 12px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.App::-webkit-scrollbar-button:increment,
+.App::-webkit-scrollbar-button {
+  display: none;
 }
 
-.App-link {
-  color: #61dafb;
+.App::-webkit-scrollbar:horizontal {
+  height: 12px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarBackground);
+  border-radius: 20px;
+  border: 2px solid var(--scrollbarBorder);
 }
+
+.App::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
