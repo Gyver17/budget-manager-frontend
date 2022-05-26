@@ -1,49 +1,33 @@
 .container {
-  position: relative;
-  border-bottom: 1px solid var(--primary);
-  margin: 1.5rem 0;
+	display: flex;
+	flex-direction: column;
+	padding: 0.8rem 0.5rem;
+}
+
+.container span {
+	color: var(--primary);
+	padding: 0.5rem 0;
+	font-size: 1.4rem;
+	*font-style: italic;
+	*font-weight: 500;
 }
 
 .container input {
-  width: 100%;
-  padding: 0 0.5rem;
-  height: 2.5rem;
-  font-size: 1rem;
-  color: var(--fontColor1);
-  border: none;
-  background: none;
-  outline: none;
+	background: var(--quintenary);
+	width: 100%;
+	height: 2.8rem;
+	padding: 0.5rem;
+	font-size: 1rem;
+  *font-style: italic;
+	border-radius: 0.5rem;
+	border: 0.2rem solid var(--tertiary);
+	outline: none;
 }
 
-.container label {
-  position: absolute;
-  top: 50%;
-  left: 0.3rem;
-  color: var(--primary);
-  transform: translateY(-50%);
-  font-size: 1.2rem;
-  pointer-events: none;
-  transition: all 0.4s ease;
-}
-
-.container span::before {
-  content: "";
-  position: absolute;
-  top: 2.5rem;
-  left: 0;
-  width: 0;
-  height: 0.15rem;
-  background: var(--secondary);
-  transition: all 0.4s;
-}
-
-.container input:focus ~ label,
-.container input:not(:placeholder-shown) ~ label {
-  top: -0.3rem;
-  color: var(--secondary);
-}
-
-.container input:focus ~ span::before,
-.container input:not(:placeholder-shown) ~ span::before {
-  width: 100%;
+.container input:hover,
+.container input:focus,
+.container input:not(:placeholder-shown) {
+  background: var(--background);
+	border:0.25rem solid var(--secondary);
+  transition: all 0.2s ease-in-out;
 }

@@ -1,14 +1,13 @@
-import React from 'react'
-import styles from "./style.module.css"
+import React from "react";
+import styles from "./style.module.css";
 
-function TextLogin({title, icon, ...props}) {
+function TextLogin({ title, icon, ...props }) {
 	return (
 		<div className={styles.container}>
-			<input placeholder=' ' {...props}/>
-			<label>{title}</label>
-	        <span></span>
+			<span>{title}</span>
+			<input placeholder=" " {...props} />
 		</div>
-	)
+	);
 }
 
-export default TextLogin
+export default TextLogin;
