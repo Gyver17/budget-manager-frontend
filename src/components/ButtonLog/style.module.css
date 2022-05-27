@@ -5,18 +5,13 @@
     border-radius: 0.5rem;
     color: var(--quintenary);
     z-index: 1;
-    background: var(--tertiary);
+    background: var(--primary);
     position: relative;
     font-weight: 1000;
     font-size: 1rem;
-    /* -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27); */
-    *box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-    transition: all 250ms;
-    *overflow: hidden;
 }
 
 .button:hover {
-    background: var(--secondary);
     cursor: pointer;
 }
 
@@ -28,7 +23,7 @@
     height: 100%;
     width: 0;
     border-radius: 0.5rem;
-    background-color: var(--primary);
+    background-color: var(--secondary);
     z-index: -1;
     -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
     box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);

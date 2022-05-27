@@ -1,33 +1,49 @@
-.container {
+.container,
+.error {
 	display: flex;
 	flex-direction: column;
 	padding: 0.8rem 0.5rem;
 }
 
-.container span {
+.container span,
+.error span {
 	color: var(--primary);
 	padding: 0.5rem 0;
 	font-size: 1.4rem;
-	*font-style: italic;
-	*font-weight: 500;
 }
 
-.container input {
+.error span {
+	color: var(--quaternary);
+}
+
+.container input,
+.error input {
 	background: var(--quintenary);
 	width: 100%;
 	height: 2.8rem;
 	padding: 0.5rem;
 	font-size: 1rem;
-  *font-style: italic;
+	*font-style: italic;
 	border-radius: 0.5rem;
 	border: 0.2rem solid var(--tertiary);
 	outline: none;
 }
 
+.error input {
+	border: 0.2rem solid var(--quaternary);
+}
+
 .container input:hover,
 .container input:focus,
 .container input:not(:placeholder-shown) {
-  background: var(--background);
-	border:0.25rem solid var(--secondary);
-  transition: all 0.2s ease-in-out;
+	background: var(--background);
+	border: 0.25rem solid var(--secondary);
+	transition: all 0.2s ease-in-out;
+}
+
+.errorMessage {
+	color: var(--quaternary);
+	padding: 0.2rem 0.3rem;
+	margin: 0.2rem 0;
+	font-size: 1.2rem;
 }

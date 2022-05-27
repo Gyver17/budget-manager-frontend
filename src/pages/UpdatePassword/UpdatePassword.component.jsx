@@ -1,5 +1,5 @@
 /* ---- Library Imports ---- */
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,48 +14,61 @@ import ToasterMessage, {
 
 /* ---- Imports to Components ---- */
 import styles from "./style.module.css";
-import image from "../../assets/images/undraw_finance_re_gnv2.svg";
-import validationScheme from "./utils/signIn.validation";
+import image from "../../assets/images/undraw_secure_login_pdn4.svg";
+import validationScheme from "./utils/updatePassword.validation";
 import { AuthContext } from "../../context/AuthProvider.context";
 import { types } from "../../context/authReducer.context";
 import UserServices from "../../services/user.services";
 
-/* ---- Component ---- */
-function SignIn() {
+function UpdatePassword() {
 	const navigate = useNavigate();
-	const [, dispatch] = useContext(AuthContext);
+	const [state, dispatch] = useContext(AuthContext);
 	const [loading, setLoading] = useState(false);
-	const userServices = new UserServices();
+	const [params, setParams] = useState({});
+	const userServices = new UserServices(dispatch, toast);
+
+	useEffect(() => {
+		const { updatePassword } = state;
+		setParams(updatePassword);
+
+		return () => {
+			if (updatePassword === null) {
+				navigate("/");
+			}
+		};
+	}, [state, navigate]);
 
 	const {
 		control,
 		handleSubmit,
 		formState: { errors },
 	} = useForm({
-		defaultValues: { email: "", password: "" },
+		defaultValues: { password: "", repeatPassword: "" },
 		resolver: yupResolver(validationScheme),
 	});
 
 	const onSubmit = async (data) => {
 		try {
 			setLoading(true);
-			const { queryData, success } = await userServices.signIn(data);
+			const { success } = await userServices.updatePassword(
+				params.id,
+				params.token,
+				data
+			);
 			if (success) {
-				dispatch({
-					type: types.authLogin,
-					payload: { user: queryData },
-				});
-				localStorage.setItem("user", JSON.stringify(queryData));
-				navigate("/");
+				toast.success("Contraseña actualizada con exito");
+				setTimeout(function () {
+					dispatch({
+						type: types.clearUpdatePassword,
+					});
+					navigate("/");
+				}, 2000);
 			} else {
 				setLoading(false);
-				toast.error("Correo Electrónico o Contraseña Invalida");
+				toast.error("El tiempo para cambiar la Contraseña expiró");
 			}
-		} catch (error) {
-			window.location.reload(true);
-		}
+		} catch (error) {}
 	};
-
 	return (
 		<>
 			<ToasterMessage />
@@ -65,18 +78,10 @@ function SignIn() {
 				</div>
 				<div className={styles.content}>
 					<header className={styles.header}>
-						<h1>¡Bienvenid@ a Budget Manager!</h1>
-						<h3>Gestiona tu dinero de una manera más facíl</h3>
+						<h1>¡Actualiza tu Contraseña!</h1>
 					</header>
 					<main className={styles.form}>
 						<form onSubmit={handleSubmit(onSubmit)}>
-							<TextLogin
-								type="text"
-								title="Correo Electrónico"
-								name="email"
-								control={control}
-								errors={errors.email}
-							/>
 							<TextLogin
 								type="password"
 								title="Contraseña"
@@ -84,26 +89,24 @@ function SignIn() {
 								control={control}
 								errors={errors.password}
 							/>
-							<NavLink
-								to="/forgotpassword"
-								className={styles.link}
-							>
-								<span>¿Olvidaste tu contraseña?</span>
-							</NavLink>
+							<TextLogin
+								type="password"
+								title="Repetir Contraseña"
+								name="repeatPassword"
+								control={control}
+								errors={errors.repeatPassword}
+							/>
+
 							<div className={styles.buttonForm}>
 								<ButtonLog
-									title={
-										loading
-											? "...Iniciando"
-											: "Iniciar Sesión"
-									}
+									title={loading ? "...Guardando" : "Guardar"}
 								/>
 							</div>
 						</form>
 					</main>
 					<footer className={styles.footer}>
-						<NavLink to="/signup" className={styles.link}>
-							<span>¿No tienes cuenta?</span>
+						<NavLink to="/signin" className={styles.link}>
+							<span>Iniciar Sesión</span>
 						</NavLink>
 					</footer>
 				</div>
@@ -112,4 +115,4 @@ function SignIn() {
 	);
 }
 
-export default SignIn;
+export default UpdatePassword;
