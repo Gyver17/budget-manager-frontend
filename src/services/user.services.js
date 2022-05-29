@@ -128,4 +128,55 @@ export default class UserServices {
 			console.log(error);
 		}
 	}
+
+	async updateUser(id, token, body) {
+		try {
+			const request = await fetch(`${this.url}updateuser/${id}`, {
+				method: "PUT",
+				mode: "cors",
+				credentials: "include",
+				withCredentials: true,
+				headers: {
+					"Content-Type": "application/json",
+					"x-access-token": token,
+				},
+				body: JSON.stringify(body),
+			});
+			const queryData = await request.json();
+
+			if (request.ok) {
+				this.toast.success("Perfil actualizado");
+				return { queryData, success: true };
+			} else {
+				constraintViolated(queryData.code, this.toast, this.messages);
+				return { queryData, success: false };
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	async closeSession(id, token) {
+		try {
+			const request = await fetch(`${this.url}closesession/${id}`, {
+				method: "PUT",
+				mode: "cors",
+				credentials: "include",
+				withCredentials: true,
+				headers: {
+					"Content-Type": "application/json",
+					"x-access-token": token,
+				},
+			});
+			const queryData = await request.json();
+
+			if (request.ok) {
+				return { queryData, success: true };
+			} else {
+				return { queryData, success: false };
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
 }

@@ -1,0 +1,76 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	margin: 0.5rem 1.5rem;
+}
+
+.container h1 {
+	font-size: 1.8rem;
+	text-align: center;
+	color: var(--primary);
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+}
+
+.inputs {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem 0;
+	max-height: 30rem;
+	overflow-y: auto;
+}
+
+.inputs::-webkit-scrollbar {
+	-webkit-appearance: none;
+}
+
+.inputs::-webkit-scrollbar:vertical {
+	width: 0.4rem;
+}
+
+.inputs::-webkit-scrollbar-button:increment,
+.inputs::-webkit-scrollbar-button {
+	display: none;
+}
+
+.inputs::-webkit-scrollbar-thumb {
+	background-color: var(--secondary);
+	border-radius: 20px;
+}
+
+.inputs::-webkit-scrollbar-track {
+	border-radius: 10px;
+}
+
+.form footer {
+	padding: 1rem 0;
+	margin-left: auto;
+}
+
+@media screen and (min-width: 25rem) {
+	.inputs {
+		max-height: 18rem;
+	}
+}
+
+@media screen and (min-height: 30rem) {
+	.inputs {
+		max-height: 20rem;
+	}
+}
+
+@media screen and (min-height: 50rem) {
+	.inputs {
+		max-height: 25rem;
+	}
+}
+
+@media screen and (min-height: 65rem) {
+	.inputs {
+		max-height: 45rem;
+	}
+}

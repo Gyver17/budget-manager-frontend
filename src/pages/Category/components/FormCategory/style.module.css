@@ -1,0 +1,27 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	margin: 0.5rem 1.5rem;
+}
+
+.container h1 {
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+}
+
+.inputs {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem 0;
+}
+
+.form footer {
+    padding: 1rem 0;
+    margin-left: auto;
+}

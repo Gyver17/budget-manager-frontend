@@ -1,0 +1,71 @@
+.inputGroup {
+	margin: 1rem auto;
+	width: 95%;
+}
+
+.input,
+.inputError {
+	display: flex;
+	width: 100%;
+	height: 3rem;
+	background-color: var(--secondaryBackground);
+	border-radius: 0.5rem;
+	padding: 0 1rem;
+	*margin: 1rem 0;
+	border: 0.1rem solid transparent;
+	outline: none;
+	font-size: 1rem;
+	box-shadow: 0 0 0.15rem 0 var(--primary);
+	transition: border-color 0.3s cubic-bezier(0.25, 0.01, 0.25, 1) 0s,
+		color 0.3s cubic-bezier(0.25, 0.01, 0.25, 1) 0s,
+		background 0.3s cubic-bezier(0.25, 0.01, 0.25, 1) 0s;
+}
+
+.inputError {
+	box-shadow: 0 0 0.15rem 0 var(--quaternary);
+}
+
+.label,
+.labelError {
+	display: block;
+	margin-bottom: 0.3rem;
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: var(--primary);
+	transition: color 0.3s cubic-bezier(0.25, 0.01, 0.25, 1) 0s;
+}
+
+.labelError {
+	color: var(--quaternary);
+}
+
+.input:hover,
+.input:focus,
+.inputGroup:hover .input {
+	outline: none;
+	border: 0.2rem solid var(--secondary);
+	background-color: var(--quintenary);
+}
+
+.inputError:hover,
+.inputError:focus,
+.inputGroup:hover .inputError {
+	outline: none;
+	border: 0.2rem solid var(--quaternary);
+	background-color: var(--quintenary);
+}
+
+.inputGroup:hover .label,
+.input:focus,
+.inputGroup:hover .labelError,
+.inputError:focus {
+	font-size: 1.25rem;
+	font-weight: bold;
+}
+
+.errorMessage {
+	color: var(--quaternary);
+	padding: 0.2rem 0.3rem;
+	margin: 0.2rem 0;
+	font-size: 1.2rem;
+}

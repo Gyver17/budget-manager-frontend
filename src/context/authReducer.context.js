@@ -5,6 +5,7 @@ const types = {
 	clearSession: "clearSession",
 	updatePassword: "updatePassword",
 	clearUpdatePassword: "clearUpdatePassword",
+	updateUser: "updateUser",
 };
 
 const initialState = {
@@ -49,6 +50,12 @@ const authReducer = (state, action) => {
 			return {
 				...state,
 				updatePassword: null,
+			};
+		case types.updateUser:
+			const update = action.payload;
+			return {
+				...state,
+				user: update.user,
 			};
 		default:
 			return state;

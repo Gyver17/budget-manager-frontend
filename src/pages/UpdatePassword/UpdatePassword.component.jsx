@@ -49,12 +49,14 @@ function UpdatePassword() {
 
 	const onSubmit = async (data) => {
 		try {
+			const toastId = toast.loading("Actualizando");
 			setLoading(true);
 			const { success } = await userServices.updatePassword(
 				params.id,
 				params.token,
 				data
 			);
+			toast.dismiss(toastId);
 			if (success) {
 				toast.success("Contraseña actualizada con exito");
 				setTimeout(function () {

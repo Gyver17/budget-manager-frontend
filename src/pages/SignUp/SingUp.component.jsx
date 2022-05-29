@@ -43,6 +43,7 @@ function SingUp() {
 
 	const onSubmit = async (data) => {
 		try {
+			const toastId = toast.loading("Registrando");
 			setLoading(true);
 			const { queryData, success } = await userServices.signUp(data);
 			if (success) {
@@ -52,6 +53,7 @@ function SingUp() {
 				});
 				localStorage.setItem("user", JSON.stringify(queryData));
 				navigate("/");
+				toast.dismiss(toastId);
 			} else {
 				setLoading(false);
 			}

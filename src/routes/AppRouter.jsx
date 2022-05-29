@@ -8,11 +8,20 @@ import Operations from "../pages/Operations/Operations.component";
 import SignIn from "../pages/SignIn/SignIn.component";
 import SignUp from "../pages/SignUp/SingUp.component";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage.component";
+import Profile from "../pages/Profile/Profile.component";
 
 import PrivateRoutes from "./PrivateRoutes";
 import PublicRoutes from "./PublicRoutes";
 
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthProvider.context";
+import SessionExpired from "../components/SessionExpired/SessionExpired.component";
+
+
 function AppRouter() {
+	const [state] = useContext(AuthContext);
+	const { sessionExpired } = state;
+
 	return (
 		<>
 			<Router>
@@ -22,6 +31,7 @@ function AppRouter() {
 						<Route path="/" element={<Home />} />
 						<Route path="/category" element={<Category />} />
 						<Route path="/operations" element={<Operations />} />
+						<Route path="/profile" element={<Profile />} />
 					</Route>
 					{/*Public Routes*/}
 					<Route element={<PublicRoutes />}>
@@ -38,6 +48,7 @@ function AppRouter() {
 					</Route>
 					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
+				{sessionExpired && <SessionExpired serverError={false} />}
 			</Router>
 		</>
 	);

@@ -1,0 +1,174 @@
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 5rem;
+	background: var(--quintenary);
+	box-shadow: 0 0 0.6rem 0 var(--primary);
+}
+
+.title {
+	margin: 0 2rem;
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: var(--primary);
+}
+
+.group {
+	margin: 0 2rem;
+}
+
+.group div {
+	font-size: 1.8rem;
+	color: var(--primary);
+}
+
+.group label:hover {
+	color: var(--tertiary);
+	transform: scale(1.1);
+	transition: all 0.2s ease-in;
+}
+
+.group div label {
+	cursor: pointer;
+}
+
+input#menu,
+input#user {
+	visibility: hidden;
+	position: absolute;
+}
+
+.user {
+	display: none;
+}
+
+.tooltip {
+    visibility: hidden;
+    position: fixed;
+}
+
+.background {
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	position: fixed;
+	background-color: #343a404a;
+}
+
+.background .sidebar {
+	z-index: 100;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background: var(--primary);
+	width: 0rem;
+	height: 100%;
+	position: absolute;
+	right: 0;
+	transition: all 0.3s ease-in;
+}
+input#menu:checked ~ .background {
+	visibility: visible;
+}
+
+input#menu:checked ~ .background .sidebar {
+	width: 18rem;
+}
+
+.close {
+	margin-left: auto;
+	margin-right: 0.5rem;
+	width: 3rem;
+	height: 3rem;
+	background: none;
+	outline: none;
+	font-size: 2rem;
+	color: var(--quintenary);
+	border: 0;
+	padding: 1rem;
+	cursor: pointer;
+}
+
+.close:hover {
+	color: var(--quaternary);
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	color: var(--quintenary);
+	font-size: 1.5rem;
+	text-decoration: none;
+	padding: 1rem;
+}
+
+.list li {
+	display: flex;
+	flex-direction: row;
+	padding: 0.8rem 0;
+	cursor: pointer;
+}
+
+.list li:hover {
+	color: var(--tertiary);
+	border-bottom: 0.2rem solid var(--tertiary);
+	transition: all 0.3s ease-in;
+}
+
+.list li label {
+	width: 100%;
+}
+
+.list li label i {
+	padding: 0 1rem;
+}
+
+@media screen and (min-width: 64rem) {
+	.menu {
+		display: none;
+	}
+
+	.user {
+		display: flex;
+        flex-direction: row;
+
+	}
+
+	.user span {
+        color: var(--primary);
+		font-size: 1.2rem;
+		padding: 0 0.8rem;
+        margin: auto 0;
+	}
+
+    .tooltip {
+        visibility: hidden;
+        background: var(--primary);
+        right: 0;
+        margin-right: 1rem;
+        top: 7rem;
+        box-shadow: 0 0 0.2rem 0 var(--primary);
+        transition: all 0.3s ease-in;
+    }
+
+    .tooltip::before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 1rem solid transparent;
+        border-right: 1rem solid transparent;
+        border-bottom: 1rem solid var(--primary);
+        position: absolute;
+        top: -1rem;
+        right: 0.8rem;
+    }
+
+    input#user:checked ~ .tooltip {
+        visibility: visible;
+        top: 4.5rem;
+    }
+}

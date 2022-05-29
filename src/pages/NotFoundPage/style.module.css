@@ -1,0 +1,49 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 100vw;
+	height: 100vh;
+	background-color: var(--quintenary);
+}
+
+.container img {
+	width: 25rem;
+	height: 25rem;
+	margin: auto;
+	box-shadow: rgba(0, 0, 0, 0.4) 0 0.12rem 0.24rem,
+		rgba(0, 0, 0, 0.3) 0 0.44rem 0.82rem -0.19rem,
+		rgba(0, 0, 0, 0.2) 0 -0.19rem 0 inset;
+}
+
+.container button {
+	width: 10rem;
+	height: 5rem;
+	color: var(--quintenary);
+	background-color: var(--tertiary);
+	margin: auto;
+	border-radius: 1rem;
+	outline: none;
+	border: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.container button:hover {
+    border: 0.2rem solid var(--tertiary);
+    background-color: var(--quintenary);
+    color: var(--tertiary);
+    transform: scale(1.2);
+    transition: all 0.3s ease-in;
+}
+
+.container button:not(:hover) {
+    border: 0;
+    background-color: var(--tertiary);
+    color: var(--quintenary);
+    transform: scale(1);
+    transition: all 0.3s ease-out;
+}
+
+

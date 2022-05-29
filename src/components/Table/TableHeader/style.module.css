@@ -1,0 +1,28 @@
+.container {
+	background: var(--quintenary);
+	position: static;
+	width: 100%;
+	top: 0.1rem;
+	box-shadow: 0 0.1rem 0.4rem 0 var(--primary);
+}
+
+.container tr {
+	width: 100%;
+}
+
+.th {
+	color: var(--primary);
+	font-size: 1.2rem;
+	font-weight: bold;
+	padding: 1rem 1.5rem;
+}
+
+@media screen and (min-width: 64rem) {
+	.container {
+		position: sticky;
+	}
+
+	.container tr {
+		position: relative;
+	}
+}

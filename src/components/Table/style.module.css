@@ -1,0 +1,47 @@
+.container {
+	display: block;
+	height: 50vh;
+    max-height: 90%;
+	width: 90%;
+	overflow: auto;
+    box-shadow: 0 0.1rem 0.4rem 0 var(--primary);
+	border-radius: 1rem;
+}
+
+.table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.container::-webkit-scrollbar {
+	-webkit-appearance: none;
+}
+
+.container::-webkit-scrollbar:vertical {
+	width: 0.5rem;
+    background-color: var(--quintenary);
+}
+
+.container::-webkit-scrollbar:horizontal {
+	height: 0.5rem;
+}
+
+.container::-webkit-scrollbar-button:increment,
+.container::-webkit-scrollbar-button {
+	display: none;
+}
+
+.container::-webkit-scrollbar-thumb {
+	background-color: var(--secondary);
+	border-radius: 1.5rem;
+}
+
+.container::-webkit-scrollbar-track {
+	border-radius: 0.8rem;
+}
+
+@media screen and (min-height: 50rem) {
+	.container {
+		*max-height: 70rem;
+	}
+}

@@ -36,12 +36,12 @@ function ForgotPassword() {
 		defaultValues: {
 			email: "",
 			code: "",
-		},
-		// resolver: yupResolver(validationScheme),
+		}
 	});
 
 	const verifyEmail = useCallback(async () => {
 		try {
+			const toastId = toast.loading("Enviando");
 			setLoading(true);
 			const email = getValues("email");
 			const { queryData, success } = await userServices.verifyEmail({
@@ -51,6 +51,7 @@ function ForgotPassword() {
 				setValue("email", "");
 				setId(queryData.id);
 				setRender(true);
+				toast.dismiss(toastId);
 			} else {
 				toast.error("Correo Electrónico no encontrado");
 			}
@@ -62,6 +63,7 @@ function ForgotPassword() {
 
 	const verifyCode = useCallback(async () => {
 		try {
+			const toastId = toast.loading("Verificando");
 			setLoading(true);
 			const code = getValues("code");
 			const { queryData, success } = await userServices.verifyCode(id, {
@@ -72,11 +74,12 @@ function ForgotPassword() {
 					type: types.updatePassword,
 					payload: { id, token: queryData.token },
 				});
+				toast.dismiss(toastId);
 				navigate("/updatepassword");
 			} else {
 				toast.error("Codigo Invalido");
 			}
-			setLoading(false);
+			setLoading(false)
 		} catch (error) {
 			window.location.reload(true);
 		}

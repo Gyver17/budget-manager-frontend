@@ -38,6 +38,7 @@ function SignIn() {
 
 	const onSubmit = async (data) => {
 		try {
+			const toastId = toast.loading("Iniciando");
 			setLoading(true);
 			const { queryData, success } = await userServices.signIn(data);
 			if (success) {
@@ -46,6 +47,7 @@ function SignIn() {
 					payload: { user: queryData },
 				});
 				localStorage.setItem("user", JSON.stringify(queryData));
+				toast.dismiss(toastId);
 				navigate("/");
 			} else {
 				setLoading(false);

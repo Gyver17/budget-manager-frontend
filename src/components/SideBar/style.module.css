@@ -1,0 +1,114 @@
+input#menu {
+	visibility: hidden;
+	position: absolute;
+}
+
+.sidebar {
+	visibility: hidden;
+	display: flex;
+	flex-direction: column;
+	background: var(--primary);
+	width: 0rem;
+	height: 100%;
+	box-shadow: 0 0.1rem 0.4rem 0 var(--primary);
+	transition: all 0.3s ease-in;
+}
+
+input#menu:checked ~ .sidebar {
+	width: 20rem;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	font-size: 1.5rem;
+	text-decoration: none;
+	padding: 1rem;
+}
+
+.list li {
+	display: flex;
+	flex-direction: row;
+	height: 3rem;
+	margin: 0.5rem auto;
+	*margin: 0 auto;
+	cursor: pointer;
+}
+
+.link:hover,
+.menu:hover {
+	color: var(--tertiary);
+	border-bottom: 0.2rem solid var(--tertiary);
+	transition: all 0.3s ease-in;
+}
+
+.link,
+.menu label {
+	display: flex;
+	flex-direction: row;
+	text-decoration: none;
+	align-items: center;
+	color: var(--quintenary);
+	width: 100%;
+}
+
+.link i,
+.menu label i {
+	padding: 0 0.5rem;
+}
+
+input#menu:checked ~ .sidebar .list .menu i {
+	margin-left: auto;
+	transform: rotate(180deg);
+	transition: all 0.3s ease-in;
+}
+
+input#menu:not(:checked) ~ .sidebar .list .menu i {
+	margin-left: 0;
+	transform: rotate(0deg);
+	transition: all 0.3s ease-in;
+}
+
+.list li .link span,
+.menu label span {
+	visibility: hidden;
+	width: 0;
+	transition: all 0.3s ease-in;
+}
+
+input#menu:checked ~ .sidebar .list span {
+	visibility: visible;
+	width: 100%;
+}
+
+input#menu:checked ~ .sidebar .list li {
+	margin: 0.5rem 1rem;
+}
+
+@media screen and (min-width: 64rem) {
+	.sidebar {
+		visibility: visible;
+		width: 5rem;
+	}
+}
+
+@media screen and (min-width: 100rem) {
+	.menu {
+		visibility: hidden;
+		position: absolute;
+	}
+
+	.sidebar {
+		width: 18rem;
+	}
+
+	.sidebar .list li {
+		margin: 0 1rem;
+	}
+
+	.list li .link span {
+		visibility: visible;
+		width: 100%;
+	}
+}
