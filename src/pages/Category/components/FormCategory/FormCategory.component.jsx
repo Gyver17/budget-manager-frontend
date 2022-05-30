@@ -38,7 +38,7 @@ function FormCategory({ openForm, setOpenForm, services, queryClient, toast }) {
 	}, [reset, openForm]);
 
 	const onSubmit = async (data) => {
-		const toastId = toast.loading("Actualizando");
+		const toastId = toast.loading("Registrando");
 		await services.createCategory(data, queryClient);
 		toast.dismiss(toastId);
 		reset({ name: "" });

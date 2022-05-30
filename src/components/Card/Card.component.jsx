@@ -18,7 +18,7 @@ function Card({ data, toast, services, queryClient }) {
 	}, [data, setValue]);
 
 	const deleteCategory = async () => {
-		const toastId = toast.loading("Actualizando");
+		const toastId = toast.loading("Eliminando");
 		await services.deleteCategory(
 			category.id,
 			queryClient
